@@ -1,61 +1,28 @@
-# Mercer's OpenWrt source
+# Forked from [KFERMercer/OpenWrt](https://github.com/KFERMercer/OpenWrt) ，I am not author.
 
-## [![Build](https://img.shields.io/github/workflow/status/KFERMercer/OpenWrt/OpenWrt-CI/master?color=blue)](https://github.com/KFERMercer/OpenWrt/actions?query=workflow%3AOpenWrt-CI) [![Release](https://img.shields.io/github/release/KFERMercer/OpenWrt?color=blue)](https://github.com/KFERMercer/OpenWrt/releases) [![Contributors](https://img.shields.io/github/contributors/KFERMercer/OpenWrt?color=blue)](https://github.com/KFERMercer/OpenWrt/graphs/contributors) [![Last commit](https://img.shields.io/github/last-commit/KFERMercer/OpenWrt?color=blue)](https://github.com/KFERMercer/OpenWrt/commits/master)
+## [![Build](https://img.shields.io/github/workflow/status/Narizgnaw/Openwrt_Homeuse/OpenWrt-CI?style=flat-square)](https://github.com/Narizgnaw/Openwrt_Homeuse/actions?query=workflow%3AOpenWrt-CI) [![Last commit](https://img.shields.io/github/last-commit/Narizgnaw/Openwrt_Homeuse?style=flat-square)](https://github.com/Narizgnaw/Openwrt_Homeuse/commits/master)
 
-This repository is a router firmware that my own using. \
-I'm already made some improvements based on the original project.
+# 这是一个带有自动编译[Openwrt](https://github.com/openwrt/openwrt)固件的项目，目前生成的固件可以给X86_64路由器用。
 
-## How to build:
+## 1.固件应该会在每天自动编译好，点击上面的[Action](https://github.com/Narizgnaw/Openwrt_Homeuse/actions)按钮即可下载此固件。
 
-To build your own firmware, you need to have access to a Linux, BSD or MacOSX system (case-sensitive filesystem required). Cygwin will not be supported because of the lack of case sensitiveness in the file system.
+## 2.固件特色：
+（1）在KFERMercer大佬的固件基础上增加了root分区的大小（某些第三方应用的日志可能会把root分区占满）；
 
-Also, you need to have installed necessary packages. For example, in Debian: \
-running
+（2）增加了Softether（L2TP/IPSec服务端，可以Windows/Mac/iOS/Android无障碍连接）； 
 
-```shell
-sudo apt-get update
-```
+（3）加了luci-app-uhttpd替换了luci-app-webadmin，这是用来https远程访问路由器web管理界面的应用；
 
-then
+（4）我不用minidlna、openvpn、ttyd、verysync、wireguard，所以把这几个luci-app的编译取消了；
 
-```shell
-sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev subversion flex node-uglify git-core gcc-multilib p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx-ucl libelf-dev autoconf automake libtool autopoint
-```
+（5）其余和KFERMercer的固件就没什么区别了，大佬固件比较稳定，QQ秒回，BUG秒修，集合常用功能+黑色主题+IPv6+Docker，无多拨负载均衡；
 
+（6）如果想变更配置，请修改/makeconfig.d/x86_64.config这个文件。
 
-Run
+## 3.不要Fork我的库，Fork以下两位大佬的库。
 
-```shell
-./scripts/feeds update -a
-```
+[![Fork KFER OP](https://img.shields.io/github/forks/KFERMercer/OpenWrt?label=Fork%20KFERMercer%2FOpenWrt&style=flat-square)](https://github.com/KFERMercer/OpenWrt) [![Fork LEAN OP](https://img.shields.io/github/forks/coolsnowwolf/lede?label=Fork%20Lean%2FOpenWrt&style=flat-square)](https://github.com/coolsnowwolf/lede)
 
-to get all the latest package definitions, defined in `/feeds.conf` or `/feeds.conf.default` respectively;
+## 4.本库仅供自用，本人又菜又懒，暂时无法提供issue服务。
 
-```shell
-./scripts/feeds install -a
-```
-
-to install symlinks of all of them into `/package/feeds/`.
-
-
-Use
-
-```shell
-make menuconfig
-```
-
-to configure your image.
-
-
-Simply running
-
-```shell
-make
-```
-
-will build your firmware. It will download all sources, build the cross-compile toolchain, and then cross-compile the kernel and all choosen applications for your target system.
-
-## Acknowledgements:
-
-The original codes built by [OpenWrt Project](https://openwrt.org), other core codes comes from [coolsnowwolf](https://github.com/coolsnowwolf/lede). \
-For this, I am sincerely pay tribute to them.
+## 5.感谢Openwrt项目开发组。
