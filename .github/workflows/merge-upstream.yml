@@ -32,11 +32,11 @@ jobs:
 
     - name: Set git identity
       run : |
-        git config --global user.email "KFER.Mercer@gmail.com"
-        git config --global user.name "KFERMercer"
+        git config --global user.email "07132041@stu.xupt.edu.cn"
+        git config --global user.name "Narzignaw"
 
     - name: Load upstream commits
-      run: git pull https://github.com/coolsnowwolf/lede.git --no-edit
+      run: git pull https://github.com/KFERMercer/OpenWrt.git --no-edit
 
     - name: Push Commits
       env:
